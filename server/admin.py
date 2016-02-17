@@ -6,7 +6,7 @@ from models import OperationalSystem, Recipe, Server
 
 @admin.register(OperationalSystem)
 class OperationalSystemAdmin(admin.ModelAdmin):
-    list_display = ['name', 'os_type', 'architecture']
+    list_display = ['name', 'os_type', 'server_type', 'architecture']
 
 
 @admin.register(Recipe)

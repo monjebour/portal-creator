@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from tasks import create_server
 
 
 OS_TYPE = (
@@ -59,8 +58,14 @@ class OperationalSystem(models.Model):
         ('64', '64 Bits')
     )
 
+    SERVER_TYPE = (
+        ('docker', 'Docker'),
+        ('vagrant', 'Vagrant')
+    )
+
     name = models.CharField('Name', max_length=200)
     os_type = models.CharField('Type', choices=OS_TYPE, max_length=50, default='linux')
+    server_type = models.CharField('Server Type', choices=SERVER_TYPE, max_length=50, default='docker')
     architecture = models.CharField('Architecture', choices=ARCHITECTURE, max_length=50, default='64')
     image_name = models.CharField('Image Name', max_length=150, null=True, blank=True,
                                   help_text='Image Name is used on Docker Containers creation!')
@@ -78,7 +83,8 @@ class OperationalSystem(models.Model):
 class Recipe(models.Model):
     RECIPE_TYPE = (
         ('ansible', 'Ansible'),
-        ('chef', 'Chef')
+        ('chef', 'Chef'),
+        ('vagrant', 'Vagrant')
     )
     name = models.CharField('Name', max_length=150)
     recipe_type = models.CharField('Type', choices=RECIPE_TYPE, max_length=50, default='ansible')

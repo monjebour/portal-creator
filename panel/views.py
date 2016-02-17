@@ -26,7 +26,6 @@ def login_user(request):
                 response = 'Username Disabled!'
         else:
             response = 'Invalid Username or Password!'
-
     return render(request, 'panel/login.html', {'response': response})
 
 
