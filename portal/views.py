@@ -1,9 +1,9 @@
 from django.contrib.auth.decorators import login_required
-from models import Server
+from models import Portal
 from django.shortcuts import render
 
 
 @login_required(login_url='/panel/login/')
 def index(request):
-    servers = Server.objects.all()
-    return render(request, 'panel/server.html', {'servers': servers})
+    portals = Portal.objects.all()
+    return render(request, 'panel/portal.html', {'portals': portals})

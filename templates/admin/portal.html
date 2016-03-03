@@ -52,6 +52,7 @@
 {% block field_sets %}
 {% for fieldset in adminform %}
   {% include "admin/includes/fieldset.html" %}
+  {% include "admin/includes/fieldset.html" %}
 {% endfor %}
 {% endblock %}
 
@@ -81,6 +82,7 @@
                 <input type="submit" value="restart" class="default" name="restart" style="background:gray; float: left;"/>
                 <input type="submit" value="destroy" class="default" name="destroy" style="background:red; float: left;"/>
             {% endif %}
+
         </div>
     </div>
     {% if adminform.form.instance.state != 'done'%}
@@ -121,5 +123,12 @@
 {% prepopulated_fields_js %}
 
 </div>
+
 </form></div>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript">
+
+        $(':submit').on('click', function(){
+        })
+    </script>
 {% endblock %}
